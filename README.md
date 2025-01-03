@@ -132,7 +132,7 @@ def evaluation(similarity_df, top_n=10):
         recommendations = get_recommendation(album, similarity_df, top_n)
         y_true = [1] + [0] * (top_n - 1)
         y_scores = [similarity_df.loc[album, rec] for rec in recommendations]
-    
+  
         average_precisions.append(average_precision_score(y_true, y_scores))
         reciprocal_ranks.append(reciprocal_rank(y_true, y_scores))
 
@@ -167,11 +167,10 @@ Mean Reciprocal Rank (MRR): 0.85
 
 ## Limitations
 
-1. **Genre-Only Feature:** Recommendations rely solely on genres, ignoring artist, year, or user preferences.
-2. **Input Errors:** Invalid album names cause errors. Pre-validation or fuzzy matching can address this.
+1. **Input Errors:** Invalid album names cause errors. Pre-validation or fuzzy matching can address this.
 3. **Evaluation Simplification:** Assumes the first recommendation should match the input album, which may not reflect real-world scenarios.
 
 ## Future Improvement
 
-- currently, the performance monitoring system does not work it can be a part of the futures improvement.
-- connecting the algorythm to the database to have proper data and value based on a user.
+- Connecting the algorythm to the database to have proper data and value based on a user.
+- Usage of other field to classify and retrieve data for the commandation system ( actually using only the genre and the field "descriptors" of the dataset
